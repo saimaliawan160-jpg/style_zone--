@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Style Zone | Premium Luxury Salon — Sillanwali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#D4AF37;--gold-light:#F0D060;--gold-dark:#A8882A;
+  --black:#0D0D0D;--dark:#141414;--dark2:#1A1A1A;--dark3:#222;
+  --white:#FFFFFF;--glass:rgba(255,255,255,0.04);
+  --glass-border:rgba(212,175,55,0.18);
+  --radius-pill:9999px;--radius-card:2.5rem;--radius-lg:3rem;
+  --font-display:'Cormorant Garamond',serif;
+  --font-accent:'Playfair Display',serif;
+  --font-body:'Montserrat',sans-serif;
+  --glow:0 0 40px rgba(212,175,55,0.25);
+  --glow-strong:0 0 80px rgba(212,175,55,0.45);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+.cursor{position:fixed;width:12px;height:12px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .15s,width .3s,height .3s;mix-blend-mode:difference}
+.cursor-ring{position:fixed;width:40px;height:40px;border:1px solid rgba(212,175,55,0.5);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all .35s cubic-bezier(.25,.46,.45,.94)}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--black);z-index:99997;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .8s,visibility .8s}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-logo{font-family:var(--font-display);font-size:3.5rem;font-weight:300;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;animation:loaderPulse 1.6s ease-in-out infinite}
+.loader-sub{font-size:.65rem;letter-spacing:.35em;color:rgba(212,175,55,0.5);text-transform:uppercase}
+.loader-bar{width:180px;height:1px;background:rgba(212,175,55,0.15);border-radius:99px;overflow:hidden}
+.loader-fill{height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-light));animation:loaderBar 2s ease-in-out forwards}
+@keyframes loaderPulse{0%,100%{opacity:.6}50%{opacity:1}}
+@keyframes loaderBar{0%{width:0}100%{width:100%}}
+
+/* PARTICLES */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.2rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+nav.scrolled{background:rgba(13,13,13,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--glass-border);padding:.8rem 3rem}
+.nav-logo{font-family:var(--font-display);font-size:1.9rem;font-weight:300;letter-spacing:.2em;color:var(--gold);text-decoration:none;text-transform:uppercase}
+.nav-logo span{color:var(--white)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black)!important;padding:.55rem 1.6rem!important;border-radius:var(--radius-pill);font-weight:600!important;font-size:.65rem!important;letter-spacing:.15em!important;transition:all .3s!important;box-shadow:0 0 20px rgba(212,175,55,0.3)}
+.nav-cta:hover{box-shadow:var(--glow-strong)!important;transform:translateY(-2px) scale(1.04)!important}
+.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:1px;background:var(--gold);transition:all .3s;border-radius:99px}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(13,13,13,0.98);backdrop-filter:blur(30px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--font-display);font-size:2rem;color:var(--white);text-decoration:none;letter-spacing:.1em;transition:color .3s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-wa-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);border-radius:var(--radius-pill);padding:.4rem 1.2rem;font-size:.6rem;letter-spacing:.15em;color:#25D366;text-decoration:none!important;font-family:var(--font-body)!important;font-size:.65rem!important}
+.close-menu{position:absolute;top:2rem;right:2.5rem;font-size:1.5rem;color:var(--gold);cursor:pointer;background:none;border:none}
+
+/* COMMON */
+section{position:relative;z-index:1}
+.section-eyebrow{font-size:.6rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1.2rem}
+.section-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4rem);font-weight:300;line-height:1.1;color:var(--white)}
+.section-title em{font-style:italic;color:var(--gold)}
+.gold-line{width:60px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:1.5rem 0}
+.center-line{margin-left:auto;margin-right:auto}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.25,.46,.45,.94),transform .9s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .9s .1s,transform .9s .1s}
+.reveal-left.visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .9s .1s,transform .9s .1s}
+.reveal-right.visible{opacity:1;transform:none}
+
+/* HERO */
+#home{height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(212,175,55,0.07) 0%,transparent 70%),radial-gradient(ellipse 60% 80% at 20% 70%,rgba(212,175,55,0.04) 0%,transparent 60%),linear-gradient(160deg,#0D0D0D 0%,#1a1208 50%,#0D0D0D 100%);z-index:0}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,0.04) 1px,transparent 1px);background-size:80px 80px;z-index:0;opacity:.5}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 2rem}
+.hero-badge{display:inline-flex;align-items:center;gap:.7rem;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.25);border-radius:var(--radius-pill);padding:.45rem 1.4rem;font-size:.6rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem}
+.hero-badge::before,.hero-badge::after{content:'✦';font-size:.5rem}
+.hero-headline{font-family:var(--font-display);font-size:clamp(3.5rem,9vw,8rem);font-weight:300;line-height:1.0;color:var(--white);margin-bottom:1.5rem}
+.hero-headline em{display:block;font-style:italic;color:var(--gold);text-shadow:0 0 60px rgba(212,175,55,0.4)}
+.hero-sub{font-size:.75rem;letter-spacing:.2em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:3rem;line-height:2}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));color:var(--black);font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;border:none;border-radius:var(--radius-pill);padding:1rem 2.5rem;cursor:pointer;text-decoration:none;box-shadow:0 0 40px rgba(212,175,55,0.35),0 8px 32px rgba(0,0,0,0.3);transition:all .4s cubic-bezier(.25,.46,.45,.94);position:relative;overflow:hidden}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(255,255,255,0.15),transparent);transform:translateX(-100%);transition:transform .5s}
+.btn-primary:hover{box-shadow:var(--glow-strong),0 12px 40px rgba(0,0,0,0.4);transform:translateY(-3px) scale(1.04)}
+.btn-primary:hover::before{transform:translateX(100%)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.6rem;background:transparent;color:rgba(255,255,255,0.7);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-pill);padding:1rem 2rem;cursor:pointer;text-decoration:none;transition:all .4s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 20px rgba(212,175,55,0.15)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;animation:scrollBounce 2s ease-in-out infinite}
+.hero-scroll span{font-size:.55rem;letter-spacing:.3em;color:rgba(212,175,55,0.5);text-transform:uppercase}
+.hero-scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent)}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* FLOATING BOOK (WhatsApp) */
+.float-book{position:fixed;bottom:3rem;right:3rem;z-index:500;width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#128C7E,#25D366);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;box-shadow:0 0 40px rgba(37,211,102,0.4),0 10px 40px rgba(0,0,0,0.4);border:none;text-decoration:none;animation:floatPulse 3s ease-in-out infinite;transition:transform .3s,box-shadow .3s}
+.float-book:hover{transform:scale(1.1) rotate(5deg);box-shadow:0 0 80px rgba(37,211,102,0.6),0 15px 50px rgba(0,0,0,0.5)}
+.float-book-icon{font-size:1.4rem;line-height:1}
+.float-book-text{font-size:.4rem;font-weight:600;letter-spacing:.1em;color:#fff;text-transform:uppercase;text-align:center;line-height:1.3}
+@keyframes floatPulse{0%,100%{box-shadow:0 0 40px rgba(37,211,102,0.4),0 10px 40px rgba(0,0,0,0.4)}50%{box-shadow:0 0 80px rgba(37,211,102,0.6),0 10px 40px rgba(0,0,0,0.4)}}
+
+/* STATS */
+.stats-ribbon{background:linear-gradient(135deg,rgba(212,175,55,0.08),rgba(212,175,55,0.03));border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);padding:2.5rem 3rem;display:flex;justify-content:center;align-items:center;flex-wrap:wrap}
+.stat-item{flex:1;min-width:140px;text-align:center;padding:1rem 1.5rem;border-right:1px solid rgba(212,175,55,0.1)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:var(--font-display);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1}
+.stat-label{font-size:.58rem;letter-spacing:.25em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-top:.4rem}
+
+/* SERVICES */
+.featured-section{padding:7rem 3rem}
+.featured-header{text-align:center;margin-bottom:4rem}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto}
+.service-card{position:relative;background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border:1px solid rgba(212,175,55,0.12);border-radius:var(--radius-card);padding:2.5rem 2rem;overflow:hidden;cursor:pointer;transition:all .5s cubic-bezier(.25,.46,.45,.94);text-align:center}
+.service-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,0.1),transparent 70%);opacity:0;transition:opacity .5s}
+.service-card::after{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .5s}
+.service-card:hover{border-color:rgba(212,175,55,0.35);transform:translateY(-8px);box-shadow:var(--glow),0 20px 60px rgba(0,0,0,0.5)}
+.service-card:hover::before,.service-card:hover::after{opacity:1}
+.service-icon{width:70px;height:70px;background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));border:1px solid rgba(212,175,55,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 1.5rem;transition:all .4s}
+.service-card:hover .service-icon{background:linear-gradient(135deg,rgba(212,175,55,0.3),rgba(212,175,55,0.1));box-shadow:0 0 30px rgba(212,175,55,0.3);transform:scale(1.1) rotate(10deg)}
+.service-name{font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--white);margin-bottom:.6rem}
+.service-desc{font-size:.7rem;color:rgba(255,255,255,0.45);line-height:1.8;margin-bottom:1.2rem}
+.service-price{font-size:.65rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+
+/* REVIEWS */
+.reviews-section{padding:7rem 3rem;background:linear-gradient(180deg,transparent,rgba(212,175,55,0.02),transparent)}
+.reviews-header{text-align:center;margin-bottom:4rem}
+.reviews-track-outer{overflow:hidden;position:relative}
+.reviews-track-outer::before,.reviews-track-outer::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.reviews-track-outer::before{left:0;background:linear-gradient(90deg,var(--black),transparent)}
+.reviews-track-outer::after{right:0;background:linear-gradient(270deg,var(--black),transparent)}
+.reviews-track{display:flex;gap:1.5rem;animation:scrollReviews 30s linear infinite;width:max-content}
+.reviews-track:hover{animation-play-state:paused}
+.review-card{flex-shrink:0;width:320px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.1);border-radius:var(--radius-card);padding:2rem 1.8rem;position:relative}
+.review-card::before{content:'❝';position:absolute;top:1rem;right:1.5rem;font-size:2.5rem;color:rgba(212,175,55,0.15);font-family:serif}
+.review-stars{color:var(--gold);font-size:.8rem;margin-bottom:1rem;letter-spacing:.2rem}
+.review-text{font-size:.75rem;color:rgba(255,255,255,0.6);line-height:1.9;margin-bottom:1.5rem;font-style:italic}
+.review-author{display:flex;align-items:center;gap:.8rem}
+.review-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--black);font-family:var(--font-body);flex-shrink:0}
+.review-name{font-size:.72rem;font-weight:600;color:var(--white);letter-spacing:.05em}
+.review-date{font-size:.6rem;color:rgba(255,255,255,0.35);margin-top:.15rem}
+@keyframes scrollReviews{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SERVICES PAGE */
+#services{padding:8rem 3rem 6rem}
+.services-page-header{text-align:center;max-width:600px;margin:0 auto 5rem}
+.services-full-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+.service-full-card{background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border:1px solid rgba(212,175,55,0.12);border-radius:var(--radius-card);padding:2.5rem;transition:all .5s;position:relative;overflow:hidden}
+.service-full-card:hover{border-color:rgba(212,175,55,0.4);transform:translateY(-6px);box-shadow:var(--glow),0 24px 60px rgba(0,0,0,0.5)}
+.service-full-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+.service-full-card:hover::before{opacity:1}
+.sfc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem}
+.sfc-icon{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05));border:1px solid rgba(212,175,55,0.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;transition:all .4s}
+.service-full-card:hover .sfc-icon{box-shadow:0 0 25px rgba(212,175,55,0.4);transform:rotate(15deg)}
+.sfc-price{font-family:var(--font-display);font-size:1.6rem;color:var(--gold);font-weight:300}
+.sfc-price span{font-size:.65rem;color:rgba(212,175,55,0.6);vertical-align:super;margin-right:2px}
+.sfc-name{font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--white);margin-bottom:.5rem}
+.sfc-desc{font-size:.72rem;color:rgba(255,255,255,0.45);line-height:1.8;margin-bottom:1.5rem}
+.sfc-features{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.sfc-features li{font-size:.68rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:.6rem}
+.sfc-features li::before{content:'◆';font-size:.35rem;color:var(--gold);flex-shrink:0}
+.sfc-btn{width:100%;background:transparent;border:1px solid rgba(212,175,55,0.3);border-radius:var(--radius-pill);padding:.75rem 1.5rem;color:var(--gold);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:var(--font-body)}
+.sfc-btn:hover{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);border-color:transparent;box-shadow:0 0 25px rgba(212,175,55,0.35)}
+
+/* BOOKING PAGE */
+#booking{padding:8rem 3rem 6rem;min-height:100vh}
+.booking-container{max-width:900px;margin:0 auto}
+.booking-header{text-align:center;margin-bottom:4rem}
+.booking-form-wrap{background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border:1px solid rgba(212,175,55,0.15);border-radius:var(--radius-lg);padding:3.5rem;position:relative;overflow:hidden}
+.booking-form-wrap::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,0.06),transparent 60%);pointer-events:none}
+.form-step{display:none}
+.form-step.active{display:block;animation:fadeInUp .5s ease}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.step-indicators{display:flex;justify-content:center;align-items:center;gap:0;margin-bottom:3rem}
+.step-dot{width:36px;height:36px;border-radius:50%;border:1px solid rgba(212,175,55,0.3);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:rgba(255,255,255,0.4);transition:all .4s;position:relative;z-index:1;background:var(--dark2);flex-shrink:0}
+.step-dot.active{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);border-color:transparent;font-weight:700;box-shadow:0 0 20px rgba(212,175,55,0.4)}
+.step-dot.done{background:rgba(212,175,55,0.15);border-color:var(--gold);color:var(--gold)}
+.step-line{flex:1;height:1px;background:rgba(212,175,55,0.15);margin:0 .5rem}
+.step-line.done{background:var(--gold)}
+.form-section-title{font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);margin-bottom:2rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.form-group{display:flex;flex-direction:column;gap:.5rem}
+.form-group label{font-size:.6rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,0.04);border:1px solid rgba(212,175,55,0.15);border-radius:var(--radius-pill);padding:.85rem 1.4rem;color:var(--white);font-size:.78rem;font-family:var(--font-body);outline:none;transition:all .3s;-webkit-appearance:none}
+.form-group textarea{border-radius:2rem;resize:vertical;min-height:100px;padding:1rem 1.4rem}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);box-shadow:0 0 20px rgba(212,175,55,0.15)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.25)}
+.form-group select option{background:var(--dark2);color:var(--white)}
+.service-select-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.8rem;margin-bottom:2rem}
+.service-opt{border:1px solid rgba(212,175,55,0.15);border-radius:var(--radius-card);padding:1rem .8rem;text-align:center;cursor:pointer;transition:all .3s}
+.service-opt label{display:block;cursor:pointer;font-size:.68rem;color:rgba(255,255,255,0.55);line-height:1.5}
+.service-opt label .opt-icon{font-size:1.4rem;display:block;margin-bottom:.4rem;transition:transform .3s}
+.service-opt:hover,.service-opt.selected{border-color:var(--gold);background:rgba(212,175,55,0.08)}
+.service-opt.selected label{color:var(--gold)}
+.service-opt:hover label .opt-icon,.service-opt.selected label .opt-icon{transform:scale(1.2)}
+.time-slots{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:2rem}
+.time-slot{padding:.5rem 1.1rem;border:1px solid rgba(212,175,55,0.15);border-radius:var(--radius-pill);font-size:.65rem;color:rgba(255,255,255,0.5);cursor:pointer;transition:all .3s}
+.time-slot:hover,.time-slot.selected{border-color:var(--gold);background:rgba(212,175,102,0.1);color:var(--gold)}
+.form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;gap:1rem}
+.btn-next,.btn-prev{display:inline-flex;align-items:center;gap:.5rem;border-radius:var(--radius-pill);padding:.85rem 2.2rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .35s;font-family:var(--font-body);border:none}
+.btn-next{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);font-weight:600;box-shadow:0 0 25px rgba(212,175,55,0.25)}
+.btn-next:hover{box-shadow:var(--glow-strong);transform:translateY(-2px)}
+.btn-next.wa-confirm{background:linear-gradient(135deg,#128C7E,#25D366);box-shadow:0 0 25px rgba(37,211,102,0.3);color:#fff}
+.btn-next.wa-confirm:hover{box-shadow:0 0 60px rgba(37,211,102,0.5)}
+.btn-prev{background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5)}
+.btn-prev:hover{border-color:rgba(212,175,55,0.4);color:var(--gold)}
+.booking-confirm{text-align:center;padding:3rem 0}
+.confirm-circle{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#128C7E,#25D366);display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 2rem;box-shadow:0 0 60px rgba(37,211,102,0.5);animation:confirmPop .6s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes confirmPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.confirm-title{font-family:var(--font-display);font-size:2.2rem;color:var(--gold);margin-bottom:.8rem}
+.confirm-text{font-size:.75rem;color:rgba(255,255,255,0.55);line-height:1.8}
+
+/* ABOUT */
+#about{padding:8rem 3rem 6rem}
+.about-container{max-width:1200px;margin:0 auto}
+.about-hero{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:6rem}
+.about-visual{position:relative}
+.about-img-main{width:100%;aspect-ratio:3/4;border-radius:var(--radius-lg);background:linear-gradient(145deg,rgba(212,175,55,0.12),rgba(212,175,55,0.04));border:1px solid rgba(212,175,55,0.15);display:flex;align-items:center;justify-content:center;font-size:6rem;position:relative;overflow:hidden}
+.about-img-main::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(212,175,55,0.15),transparent 60%)}
+.about-img-float{position:absolute;bottom:-2rem;right:-2rem;width:55%;aspect-ratio:1;border-radius:var(--radius-card);background:linear-gradient(145deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));border:1px solid rgba(212,175,55,0.2);display:flex;align-items:center;justify-content:center;font-size:2rem;backdrop-filter:blur(10px)}
+.about-years{position:absolute;top:-1rem;left:-1rem;width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(212,175,55,0.4)}
+.about-years-num{font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--black);line-height:1}
+.about-years-text{font-size:.4rem;letter-spacing:.15em;color:var(--black);text-transform:uppercase}
+.about-text p{font-size:.82rem;color:rgba(255,255,255,0.55);line-height:2;margin-bottom:1.2rem}
+.about-text p strong{color:var(--gold);font-weight:500}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:3rem}
+.team-card{text-align:center;cursor:pointer}
+.team-avatar{width:140px;height:140px;border-radius:50%;background:linear-gradient(145deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));border:2px solid rgba(212,175,55,0.2);display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 1.2rem;transition:all .4s;position:relative}
+.team-avatar::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(212,175,55,0.1);transition:all .4s}
+.team-card:hover .team-avatar{border-color:var(--gold);box-shadow:0 0 30px rgba(212,175,55,0.35);transform:scale(1.05)}
+.team-card:hover .team-avatar::after{inset:-8px;border-color:rgba(212,175,55,0.3)}
+.team-name{font-family:var(--font-display);font-size:1.3rem;color:var(--white)}
+.team-role{font-size:.62rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-top:.3rem}
+
+/* GALLERY */
+#gallery{padding:8rem 3rem 6rem}
+.gallery-header{text-align:center;margin-bottom:4rem}
+.gallery-filters{display:flex;justify-content:center;flex-wrap:wrap;gap:.7rem;margin-bottom:3rem}
+.gf-btn{padding:.5rem 1.4rem;border:1px solid rgba(212,175,55,0.2);border-radius:var(--radius-pill);font-size:.63rem;letter-spacing:.15em;color:rgba(255,255,255,0.5);text-transform:uppercase;cursor:pointer;background:transparent;transition:all .3s;font-family:var(--font-body)}
+.gf-btn:hover,.gf-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(212,175,55,0.08)}
+.gallery-masonry{columns:3;column-gap:1.4rem;max-width:1300px;margin:0 auto}
+@media(max-width:900px){.gallery-masonry{columns:2}}
+@media(max-width:560px){.gallery-masonry{columns:1}}
+.lux-item{break-inside:avoid;margin-bottom:1.4rem}
+.lux-frame{position:relative;overflow:hidden;cursor:pointer;border:1px solid rgba(212,175,55,0.18);box-shadow:0 0 0 0 rgba(212,175,55,0);transition:box-shadow .5s,transform .5s,border-color .5s;border-radius:2rem}
+.lux-wide{aspect-ratio:16/10}
+.lux-portrait{aspect-ratio:3/4}
+.lux-square{aspect-ratio:1}
+.lux-landscape{aspect-ratio:16/9}
+.lux-circle-frame{border-radius:50%!important}
+.lux-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.46,.45,.94),filter .5s;filter:brightness(.95) saturate(1.05)}
+.lux-frame:hover .lux-img{transform:scale(1.08);filter:brightness(1.05) saturate(1.15)}
+.lux-frame:hover{border-color:rgba(212,175,55,0.55);box-shadow:0 0 35px rgba(212,175,55,0.35),0 0 80px rgba(212,175,55,0.12),0 12px 40px rgba(0,0,0,0.5);transform:translateY(-4px)}
+.lux-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(ellipse at 50% 50%,rgba(212,175,55,0.12),transparent 70%)}
+.lux-frame:hover .lux-glow{opacity:1}
+.lux-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:1.5rem;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.2) 50%,transparent 100%);opacity:0;transition:opacity .4s;border-radius:inherit}
+.lux-frame:hover .lux-overlay{opacity:1}
+.lux-tag{font-size:.6rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;background:rgba(0,0,0,0.55);border:1px solid rgba(212,175,55,0.35);border-radius:99px;padding:.3rem .9rem;margin-bottom:.5rem;backdrop-filter:blur(8px)}
+.lux-zoom-icon{width:44px;height:44px;border-radius:50%;border:1px solid rgba(212,175,55,0.6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--gold);background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);transition:transform .3s,box-shadow .3s}
+.lux-frame:hover .lux-zoom-icon{transform:scale(1.15);box-shadow:0 0 20px rgba(212,175,55,0.5)}
+.lux-frame::before,.lux-frame::after{content:'';position:absolute;width:22px;height:22px;z-index:3;opacity:0;transition:opacity .4s,transform .4s}
+.lux-frame::before{top:10px;left:10px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);border-radius:4px 0 0 0;transform:translate(-4px,-4px)}
+.lux-frame::after{bottom:10px;right:10px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);border-radius:0 0 4px 0;transform:translate(4px,4px)}
+.lux-frame:hover::before{opacity:1;transform:translate(0,0)}
+.lux-frame:hover::after{opacity:1;transform:translate(0,0)}
+.gallery-strip{max-width:1300px;margin:3rem auto 0;padding:0 .5rem}
+.strip-label{margin-bottom:1.5rem;text-align:center}
+.strip-track{display:flex;gap:1.2rem;overflow-x:auto;padding-bottom:1rem;scrollbar-width:thin;scrollbar-color:rgba(212,175,55,0.3) transparent}
+.strip-track::-webkit-scrollbar{height:3px}
+.strip-track::-webkit-scrollbar-thumb{background:rgba(212,175,55,0.35);border-radius:99px}
+.strip-item{flex-shrink:0;text-align:center;cursor:pointer}
+.strip-frame{width:130px;height:130px;border-radius:50%;overflow:hidden;border:2px solid rgba(212,175,55,0.25);position:relative;transition:border-color .4s,box-shadow .4s,transform .4s}
+.strip-frame:hover{border-color:var(--gold);box-shadow:0 0 25px rgba(212,175,55,0.45);transform:translateY(-4px) scale(1.06)}
+.strip-img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.strip-frame:hover .strip-img{transform:scale(1.12)}
+.strip-caption{font-size:.58rem;letter-spacing:.15em;color:rgba(212,175,55,0.7);text-transform:uppercase;margin-top:.6rem}
+
+/* LIGHTBOX */
+.lux-lightbox{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.lux-lightbox.open{opacity:1;visibility:visible}
+.llb-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.93);backdrop-filter:blur(12px)}
+.llb-inner{position:relative;z-index:1;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.llb-inner img{max-width:88vw;max-height:80vh;object-fit:contain;border-radius:1.2rem;border:1px solid rgba(212,175,55,0.25);box-shadow:0 0 60px rgba(212,175,55,0.2),0 20px 60px rgba(0,0,0,0.7);animation:llbZoom .35s cubic-bezier(.25,.46,.45,.94)}
+@keyframes llbZoom{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+.llb-caption{font-family:var(--font-display);font-size:1.1rem;color:var(--gold);letter-spacing:.15em}
+.llb-counter{font-size:.6rem;letter-spacing:.2em;color:rgba(255,255,255,0.35);text-transform:uppercase}
+.llb-close{position:fixed;top:1.5rem;right:2rem;z-index:10001;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.3);color:var(--gold);width:44px;height:44px;border-radius:50%;font-size:1rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.llb-close:hover{background:rgba(212,175,55,0.3)}
+.llb-prev,.llb-next{position:fixed;top:50%;transform:translateY(-50%);z-index:10001;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.25);color:var(--gold);width:50px;height:50px;border-radius:50%;font-size:1.6rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;line-height:1}
+.llb-prev{left:1.5rem}
+.llb-next{right:1.5rem}
+.llb-prev:hover,.llb-next:hover{background:rgba(212,175,55,0.3);box-shadow:0 0 25px rgba(212,175,55,0.4)}
+
+/* CONTACT */
+#contact{padding:8rem 3rem 6rem}
+.contact-container{max-width:1100px;margin:0 auto}
+.contact-header{text-align:center;margin-bottom:5rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:2rem}
+.contact-info-item{display:flex;align-items:flex-start;gap:1.2rem}
+.ci-icon{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));border:1px solid rgba(212,175,55,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-label{font-size:.6rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:.3rem}
+.ci-value{font-size:.8rem;color:rgba(255,255,255,0.65);line-height:1.7}
+.map-embed{width:100%;height:260px;border-radius:var(--radius-card);overflow:hidden;border:1px solid rgba(212,175,55,0.2);margin-top:1rem;box-shadow:0 0 30px rgba(212,175,55,0.1)}
+.map-embed iframe{width:100%;height:100%;border:none;filter:grayscale(40%) brightness(0.85) contrast(1.1)}
+.social-links{display:flex;gap:.8rem;flex-wrap:wrap}
+.social-link{width:44px;height:44px;border-radius:50%;border:1px solid rgba(212,175,55,0.2);display:flex;align-items:center;justify-content:center;font-size:1rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:all .3s}
+.social-link:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,175,55,0.1);box-shadow:0 0 15px rgba(212,175,55,0.25);transform:translateY(-3px)}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:.7rem;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:var(--radius-pill);padding:.75rem 1.8rem;font-size:.68rem;font-weight:600;letter-spacing:.12em;color:white;text-decoration:none;text-transform:uppercase;transition:all .3s;width:fit-content}
+.whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(37,211,102,0.35)}
+.contact-form-wrap{background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border:1px solid rgba(212,175,55,0.12);border-radius:var(--radius-lg);padding:2.5rem;position:relative;overflow:hidden}
+.contact-form-wrap::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(ellipse,rgba(212,175,55,0.06),transparent 70%);pointer-events:none}
+.contact-form-title{font-family:var(--font-display);font-size:1.6rem;color:var(--white);margin-bottom:2rem}
+.cf-form{display:flex;flex-direction:column;gap:1rem}
+.cf-form input,.cf-form textarea,.cf-form select{background:rgba(255,255,255,0.04);border:1px solid rgba(212,175,55,0.15);border-radius:var(--radius-pill);padding:.8rem 1.3rem;color:var(--white);font-size:.75rem;font-family:var(--font-body);outline:none;transition:border-color .3s}
+.cf-form textarea{border-radius:1.5rem;resize:vertical;min-height:120px;padding:1rem 1.3rem}
+.cf-form input:focus,.cf-form textarea:focus,.cf-form select:focus{border-color:var(--gold);box-shadow:0 0 20px rgba(212,175,55,0.12)}
+.cf-form input::placeholder,.cf-form textarea::placeholder{color:rgba(255,255,255,0.25)}
+.cf-form select option{background:var(--dark2)}
+.cf-submit{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-weight:700;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;border:none;border-radius:var(--radius-pill);padding:.9rem 2.5rem;cursor:pointer;transition:all .35s;font-family:var(--font-body);box-shadow:0 0 25px rgba(37,211,102,0.2);align-self:flex-start;display:inline-flex;align-items:center;gap:.6rem}
+.cf-submit:hover{box-shadow:0 0 50px rgba(37,211,102,0.45);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid rgba(212,175,55,0.1);padding:4rem 3rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand .nav-logo{display:inline-block;margin-bottom:1rem}
+.footer-brand p{font-size:.72rem;color:rgba(255,255,255,0.35);line-height:1.9;max-width:260px}
+.footer-col h4{font-size:.6rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul a{font-size:.72rem;color:rgba(255,255,255,0.35);text-decoration:none;transition:color .3s}
+.footer-col ul a:hover{color:var(--gold)}
+.footer-wa{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);border-radius:var(--radius-pill);padding:.4rem 1rem;font-size:.6rem;color:#25D366;text-decoration:none;margin-top:.5rem;transition:all .3s}
+.footer-wa:hover{background:rgba(37,211,102,0.2)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.62rem;color:rgba(255,255,255,0.25)}
+.footer-bottom span{color:var(--gold)}
+
+/* PAGE SYSTEM */
+.page{display:none}
+.page.active{display:block}
+#home-page{display:block}
+.page-transition{position:fixed;inset:0;background:var(--black);z-index:9990;pointer-events:none;opacity:0;transition:opacity .35s}
+.page-transition.active{opacity:1;pointer-events:all}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .about-hero{grid-template-columns:1fr;gap:3rem}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  nav.scrolled{padding:.7rem 1.5rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-headline{font-size:clamp(2.8rem,10vw,5rem)}
+  .featured-section,.reviews-section,#services,#booking,#about,#gallery,#contact{padding:5rem 1.5rem}
+  .form-grid{grid-template-columns:1fr}
+  .stats-ribbon{padding:2rem 1.5rem}
+  .stat-item{min-width:100px;padding:.75rem}
+  .float-book{width:65px;height:65px;bottom:1.5rem;right:1.5rem}
+  footer{padding:3rem 1.5rem 1.5rem}
+  .footer-top{grid-template-columns:1fr}
+  .booking-form-wrap{padding:2rem 1.5rem}
+  .llb-prev{left:.5rem}
+  .llb-next{right:.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="page-transition" id="pageTransition"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Style Zone</div>
+  <div class="loader-sub">Sillanwali, Punjab</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo" onclick="showPage('home');return false">The Style <span>Zone</span></a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home');return false" class="active" data-page="home">Home</a></li>
+    <li><a href="#" onclick="showPage('services');return false" data-page="services">Services</a></li>
+    <li><a href="#" onclick="showPage('gallery');return false" data-page="gallery">Gallery</a></li>
+    <li><a href="#" onclick="showPage('about');return false" data-page="about">About</a></li>
+    <li><a href="#" onclick="showPage('contact');return false" data-page="contact">Contact</a></li>
+    <li><a href="#" onclick="showPage('booking');return false" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" id="closeMenu">✕</button>
+  <a href="#" onclick="showPage('home');closeMobile();return false">Home</a>
+  <a href="#" onclick="showPage('services');closeMobile();return false">Services</a>
+  <a href="#" onclick="showPage('gallery');closeMobile();return false">Gallery</a>
+  <a href="#" onclick="showPage('about');closeMobile();return false">About</a>
+  <a href="#" onclick="showPage('contact');closeMobile();return false">Contact</a>
+  <a href="#" onclick="showPage('booking');closeMobile();return false" style="color:var(--gold)">Book Appointment</a>
+  <a href="https://wa.me/923016547862" target="_blank" class="mobile-wa-badge">💬 WhatsApp: +92 301 6547862</a>
+</div>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/923016547862?text=Hello%20Style%20Zone%2C%20I%20want%20to%20book%20an%20appointment." target="_blank" class="float-book" title="Chat on WhatsApp">
+  <span class="float-book-icon">💬</span>
+  <span class="float-book-text">WhatsApp<br>Book</span>
+</a>
+
+<!-- LIGHTBOX -->
+<div id="luxLightbox" class="lux-lightbox">
+  <div class="llb-backdrop" onclick="closeLightbox()"></div>
+  <button class="llb-close" onclick="closeLightbox()">✕</button>
+  <button class="llb-prev" onclick="lbNav(-1)">‹</button>
+  <button class="llb-next" onclick="lbNav(1)">›</button>
+  <div class="llb-inner">
+    <img id="llbImg" src="" alt="">
+    <div class="llb-caption" id="llbCaption"></div>
+    <div class="llb-counter" id="llbCounter"></div>
+  </div>
+</div>
+
+<!-- ══════════════ HOME PAGE ══════════════ -->
+<div class="page active" id="home-page">
+  <section id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Luxury Salon · Sillanwali</div>
+      <h1 class="hero-headline">Where Beauty<em>Meets Art</em></h1>
+      <p class="hero-sub">Premium Salon · Expert Stylists · Makkah Colony, Sillanwali</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary" onclick="showPage('booking');return false">✦ Book Appointment</a>
+        <a href="#" class="btn-ghost" onclick="showPage('services');return false">Explore Services →</a>
+      </div>
+    </div>
+    <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
+  </section>
+
+  <div class="stats-ribbon reveal">
+    <div class="stat-item"><div class="stat-num" data-count="12">0</div><div class="stat-label">Years of Excellence</div></div>
+    <div class="stat-item"><div class="stat-num" data-count="8500">0</div><div class="stat-label">Happy Clients</div></div>
+    <div class="stat-item"><div class="stat-num" data-count="18">0</div><div class="stat-label">Expert Stylists</div></div>
+    <div class="stat-item"><div class="stat-num" data-count="4.9">0</div><div class="stat-label">Average Rating</div></div>
+  </div>
+
+  <div class="featured-section">
+    <div class="featured-header reveal">
+      <div class="section-eyebrow">What We Offer</div>
+      <h2 class="section-title">Signature <em>Services</em></h2>
+      <div class="gold-line center-line"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal"><div class="service-icon">✂</div><div class="service-name">Hair Cutting</div><div class="service-desc">Precision cuts crafted to complement your unique features and personality.</div><div class="service-price">Rs. 200</div></div>
+      <div class="service-card reveal" style="transition-delay:.1s"><div class="service-icon">🎨</div><div class="service-name">Hair Coloring</div><div class="service-desc">Vibrant transformations using premium color techniques and formulas.</div><div class="service-price">Rs. 400</div></div>
+      <div class="service-card reveal" style="transition-delay:.2s"><div class="service-icon">🪒</div><div class="service-name">Beard Styling</div><div class="service-desc">Precision beard shaping, hot towel shave, and expert grooming.</div><div class="service-price">Rs. 300</div></div>
+      <div class="service-card reveal" style="transition-delay:.3s"><div class="service-icon">✨</div><div class="service-name">Facial Treatment</div><div class="service-desc">Deep cleansing and nourishing treatments for radiant, healthy skin.</div><div class="service-price">Rs. 2,500</div></div>
+    </div>
+    <div style="text-align:center;margin-top:3rem"><a href="#" class="btn-primary" onclick="showPage('services');return false">View All Services</a></div>
+  </div>
+
+  <div class="reviews-section">
+    <div class="reviews-header reveal">
+      <div class="section-eyebrow">Client Stories</div>
+      <h2 class="section-title">What They <em>Say</em></h2>
+      <div class="gold-line center-line"></div>
+    </div>
+    <div class="reviews-track-outer">
+      <div class="reviews-track">
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Best salon in Sillanwali! The haircut and beard trim were absolutely perfect. Will definitely be a regular customer."</div><div class="review-author"><div class="review-avatar">F</div><div><div class="review-name">Fahad Malik</div><div class="review-date">Haircut · March 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"The Style Zone is on another level. The ambiance, the service quality, the staff — everything is top class for Sillanwali."</div><div class="review-author"><div class="review-avatar">A</div><div><div class="review-name">Ahmed Raza</div><div class="review-date">Beard Styling · April 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"The facial treatment completely transformed my skin. The products they use are premium quality. Love this place!"</div><div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Sana Khan</div><div class="review-date">Skin Care · May 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Came for a haircut, ended up doing the full grooming package. Best decision ever! Style Zone is truly premium."</div><div class="review-author"><div class="review-avatar">Z</div><div><div class="review-name">Zain Hussain</div><div class="review-date">Full Grooming · June 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"The beard styling is exceptional — clean, precise, exactly what I wanted. The hot towel finish was amazing!"</div><div class="review-author"><div class="review-avatar">U</div><div><div class="review-name">Usman Ali</div><div class="review-date">Beard Styling · Feb 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Very professional staff and great hygiene. The booking via WhatsApp is super convenient. Highly recommended!"</div><div class="review-author"><div class="review-avatar">N</div><div><div class="review-name">Naveed Iqbal</div><div class="review-date">Haircut · July 2025</div></div></div></div>
+        <!-- duplicated for infinite scroll -->
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Best salon in Sillanwali! The haircut and beard trim were absolutely perfect. Will definitely be a regular customer."</div><div class="review-author"><div class="review-avatar">F</div><div><div class="review-name">Fahad Malik</div><div class="review-date">Haircut · March 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"The Style Zone is on another level. The ambiance, the service quality, the staff — everything is top class for Sillanwali."</div><div class="review-author"><div class="review-avatar">A</div><div><div class="review-name">Ahmed Raza</div><div class="review-date">Beard Styling · April 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"The facial treatment completely transformed my skin. The products they use are premium quality. Love this place!"</div><div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Sana Khan</div><div class="review-date">Skin Care · May 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Came for a haircut, ended up doing the full grooming package. Best decision ever! Style Zone is truly premium."</div><div class="review-author"><div class="review-avatar">Z</div><div><div class="review-name">Zain Hussain</div><div class="review-date">Full Grooming · June 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"The beard styling is exceptional — clean, precise, exactly what I wanted. The hot towel finish was amazing!"</div><div class="review-author"><div class="review-avatar">U</div><div><div class="review-name">Usman Ali</div><div class="review-date">Beard Styling · Feb 2025</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Very professional staff and great hygiene. The booking via WhatsApp is super convenient. Highly recommended!"</div><div class="review-author"><div class="review-avatar">N</div><div><div class="review-name">Naveed Iqbal</div><div class="review-date">Haircut · July 2025</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ SERVICES PAGE ══════════════ -->
+<div class="page" id="services-page">
+  <section id="services">
+    <div class="services-page-header reveal">
+      <div class="section-eyebrow">Our Expertise</div>
+      <h2 class="section-title">Premium <em>Services</em></h2>
+      <div class="gold-line center-line"></div>
+      <p style="font-size:.75rem;color:rgba(255,255,255,0.4);line-height:1.9;margin-top:1rem">Every service delivered with meticulous attention to detail, using only the finest products.</p>
+    </div>
+    <div class="services-full-grid">
+      <div class="service-full-card reveal"><div class="sfc-header"><div class="sfc-icon">✂</div><div class="sfc-price"><span>Rs.</span>200</div></div><div class="sfc-name">Hair Cutting</div><div class="sfc-desc">Expert precision cuts for all hair types, finished with professional styling.</div><ul class="sfc-features"><li>Consultation & head analysis</li><li>Wash, cut & blow dry</li><li>Styling products included</li><li>Complimentary head massage</li></ul><button class="sfc-btn" onclick="showPage('booking')">Book This Service</button></div>
+      <div class="service-full-card reveal" style="transition-delay:.08s"><div class="sfc-header"><div class="sfc-icon">💇</div><div class="sfc-price"><span>Rs.</span>150</div></div><div class="sfc-name">Hair Styling</div><div class="sfc-desc">Elegant updos, blow-outs, and special occasion styles for any event.</div><ul class="sfc-features"><li>Occasion-specific styling</li><li>Updos & braids</li><li>Blow-outs & curls</li><li>Long-lasting hold products</li></ul><button class="sfc-btn" onclick="showPage('booking')">Book This Service</button></div>
+      <div class="service-full-card reveal" style="transition-delay:.16s"><div class="sfc-header"><div class="sfc-icon">🎨</div><div class="sfc-price"><span>Rs.</span>400</div></div><div class="sfc-name">Hair Coloring</div><div class="sfc-desc">Full color, balayage, highlights using premium international color brands.</div><ul class="sfc-features"><li>Color consultation</li><li>Balayage & ombre</li><li>Highlights & lowlights</li><li>Toning & glossing</li></ul><button class="sfc-btn" onclick="showPage('booking')">Book This Service</button></div>
+      <div class="service-full-card reveal" style="transition-delay:.24s"><div class="sfc-header"><div class="sfc-icon">🪒</div><div class="sfc-price"><span>Rs.</span>300</div></div><div class="sfc-name">Beard Styling</div><div class="sfc-desc">Precision beard shaping, hot towel shave, and grooming for the modern man.</div><ul class="sfc-features"><li>Shape & trim</li><li>Hot towel treatment</li><li>Beard oil application</li><li>Straight razor finish</li></ul><button class="sfc-btn" onclick="showPage('booking')">Book This Service</button></div>
+      <div class="service-full-card reveal" style="transition-delay:.32s"><div class="sfc-header"><div class="sfc-icon">✨</div><div class="sfc-price"><span>Rs.</span>2,500</div></div><div class="sfc-name">Facial Treatment</div><div class="sfc-desc">Deep cleansing, exfoliation, and nourishing facials for your skin type.</div><ul class="sfc-features"><li>Skin analysis</li><li>Deep cleanse & exfoliation</li><li>Mask & serums</li><li>Moisturize & protect</li></ul><button class="sfc-btn" onclick="showPage('booking')">Book This Service</button></div>
+      <div class="service-full-card reveal" style="transition-delay:.40s"><div class="sfc-header"><div class="sfc-icon">💄</div><div class="sfc-price"><span>Rs.</span>1,000</div></div><div class="sfc-name">Makeup Services</div><div class="sfc-desc">Professional makeup for events, parties, and photoshoots.</div><ul class="sfc-features"><li>Party & event makeup</li><li>Contouring & highlighting</li><li>Airbrush option available</li><li>Lash application included</li></ul><button class="sfc-btn" onclick="showPage('booking')">Book This Service</button></div>
+      <div class="service-full-card reveal" style="transition-delay:.48s"><div class="sfc-header"><div class="sfc-icon">💍</div><div class="sfc-price"><span>Rs.</span>10,000</div></div><div class="sfc-name">Bridal Makeup</div><div class="sfc-desc">Complete bridal packages including hair, makeup, and on-day service.</div><ul class="sfc-features"><li>Bridal consultation</li><li>Trial session included</li><li>Hair styling & makeup</li><li>On-day team support</li></ul><button class="sfc-btn" onclick="showPage('booking')">Book This Service</button></div>
+      <div class="service-full-card reveal" style="transition-delay:.56s"><div class="sfc-header"><div class="sfc-icon">🌿</div><div class="sfc-price"><span>Rs.</span>5,000</div></div><div class="sfc-name">Skin Care Treatment</div><div class="sfc-desc">Advanced skincare treatments addressing specific skin concerns.</div><ul class="sfc-features"><li>Hydration therapy</li><li>Anti-aging treatments</li><li>Brightening facials</li><li>Customized skincare plan</li></ul><button class="sfc-btn" onclick="showPage('booking')">Book This Service</button></div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════ BOOKING PAGE ══════════════ -->
+<div class="page" id="booking-page">
+  <section id="booking">
+    <div class="booking-container">
+      <div class="booking-header reveal">
+        <div class="section-eyebrow">Reserve Your Visit</div>
+        <h2 class="section-title">Book an <em>Appointment</em></h2>
+        <div class="gold-line center-line"></div>
+        <p style="font-size:.72rem;color:rgba(255,255,255,0.4);margin-top:1rem;line-height:1.8">Fill in your details and we'll send your booking directly to our WhatsApp for instant confirmation.</p>
+      </div>
+      <div class="booking-form-wrap reveal">
+        <div class="step-indicators">
+          <div class="step-dot active" id="step-dot-1">1</div>
+          <div class="step-line" id="step-line-1"></div>
+          <div class="step-dot" id="step-dot-2">2</div>
+          <div class="step-line" id="step-line-2"></div>
+          <div class="step-dot" id="step-dot-3">3</div>
+          <div class="step-line" id="step-line-3"></div>
+          <div class="step-dot" id="step-dot-4">✓</div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="form-step active" id="form-step-1">
+          <div class="form-section-title">Your Details</div>
+          <div class="form-grid">
+            <div class="form-group"><label>Full Name *</label><input type="text" id="b-name" placeholder="Your full name"></div>
+            <div class="form-group"><label>Phone Number *</label><input type="tel" id="b-phone" placeholder="+92 300 0000000"></div>
+            <div class="form-group"><label>Email Address</label><input type="email" id="b-email" placeholder="your@email.com"></div>
+            <div class="form-group"><label>Gender</label><select id="b-gender"><option value="">Select gender</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select></div>
+          </div>
+          <div class="form-nav"><div></div><button class="btn-next" onclick="nextStep(2)">Next Step →</button></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" id="form-step-2">
+          <div class="form-section-title">Choose Service</div>
+          <div class="service-select-grid">
+            <div class="service-opt" data-service="Haircut & Styling"><label><span class="opt-icon">✂</span>Haircut & Styling</label></div>
+            <div class="service-opt" data-service="Hair Styling"><label><span class="opt-icon">💇</span>Hair Styling</label></div>
+            <div class="service-opt" data-service="Hair Coloring"><label><span class="opt-icon">🎨</span>Hair Coloring</label></div>
+            <div class="service-opt" data-service="Beard Styling"><label><span class="opt-icon">🪒</span>Beard Styling</label></div>
+            <div class="service-opt" data-service="Facial Treatment"><label><span class="opt-icon">✨</span>Facial Treatment</label></div>
+            <div class="service-opt" data-service="Makeup Services"><label><span class="opt-icon">💄</span>Makeup Services</label></div>
+            <div class="service-opt" data-service="Bridal Makeup"><label><span class="opt-icon">💍</span>Bridal Makeup</label></div>
+            <div class="service-opt" data-service="Skin Care"><label><span class="opt-icon">🌿</span>Skin Care</label></div>
+          </div>
+          <div class="form-group" style="margin-bottom:1.5rem">
+            <label>Stylist Preference</label>
+            <select id="b-stylist"><option value="">Any available stylist</option><option>Senior Stylist</option><option>Hair Color Specialist</option><option>Beard & Grooming Expert</option><option>Skin Care Specialist</option></select>
+          </div>
+          <div class="form-nav"><button class="btn-prev" onclick="prevStep(1)">← Back</button><button class="btn-next" onclick="nextStep(3)">Next Step →</button></div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" id="form-step-3">
+          <div class="form-section-title">Date & Time</div>
+          <div class="form-grid" style="margin-bottom:1.5rem">
+            <div class="form-group"><label>Preferred Date *</label><input type="date" id="b-date"></div>
+            <div class="form-group"><label>Duration Estimate</label><select id="b-duration"><option>30 – 45 minutes</option><option>45 – 60 minutes</option><option>1 – 1.5 hours</option><option>1.5 – 2 hours</option><option>2+ hours (Bridal)</option></select></div>
+          </div>
+          <div class="form-group" style="margin-bottom:1.2rem"><label>Preferred Time Slot</label></div>
+          <div class="time-slots">
+            <div class="time-slot" data-time="9:00 AM">9:00 AM</div>
+            <div class="time-slot" data-time="10:00 AM">10:00 AM</div>
+            <div class="time-slot" data-time="11:00 AM">11:00 AM</div>
+            <div class="time-slot" data-time="12:00 PM">12:00 PM</div>
+            <div class="time-slot" data-time="2:00 PM">2:00 PM</div>
+            <div class="time-slot" data-time="3:00 PM">3:00 PM</div>
+            <div class="time-slot" data-time="4:00 PM">4:00 PM</div>
+            <div class="time-slot" data-time="5:00 PM">5:00 PM</div>
+            <div class="time-slot" data-time="6:00 PM">6:00 PM</div>
+            <div class="time-slot" data-time="7:00 PM">7:00 PM</div>
+          </div>
+          <div class="form-group" style="margin-bottom:1.5rem"><label>Special Notes</label><textarea id="b-notes" placeholder="Any special requests or requirements..."></textarea></div>
+          <div class="form-nav">
+            <button class="btn-prev" onclick="prevStep(2)">← Back</button>
+            <button class="btn-next wa-confirm" onclick="submitBookingWA()">💬 Confirm via WhatsApp</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Confirmation -->
+        <div class="form-step" id="form-step-4">
+          <div class="booking-confirm">
+            <div class="confirm-circle">💬</div>
+            <div class="confirm-title">WhatsApp Opened!</div>
+            <p class="confirm-text" id="confirmText">Your booking details have been prepared.<br>Complete the booking by sending the message on WhatsApp.</p>
+            <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+              <a id="waRetryBtn" href="#" target="_blank" class="btn-next wa-confirm" style="text-decoration:none;font-size:.65rem">💬 Open WhatsApp Again</a>
+              <button class="btn-prev" onclick="resetBooking()" style="font-size:.65rem">Book Another →</button>
+              <button class="btn-prev" onclick="showPage('home')" style="font-size:.65rem">← Home</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════ ABOUT PAGE ══════════════ -->
+<div class="page" id="about-page">
+  <section id="about">
+    <div class="about-container">
+      <div class="about-hero">
+        <div class="about-visual reveal-left">
+          <div class="about-img-main">🏛</div>
+          <div class="about-img-float">💎</div>
+          <div class="about-years"><div class="about-years-num">12</div><div class="about-years-text">Years<br>of Art</div></div>
+        </div>
+        <div class="about-text reveal-right">
+          <div class="section-eyebrow">Our Story</div>
+          <h2 class="section-title">Born from a <em>Passion</em> for Beauty</h2>
+          <div class="gold-line"></div>
+          <p>The Style Zone was established in <strong>Sillanwali, Punjab</strong> with a single vision: to bring world-class grooming and salon services to our community. What began as a small boutique has grown into <strong>the most trusted premium salon in the region</strong>.</p>
+          <p>Located in <strong>Makkah Colony, Sillanwali</strong>, we serve hundreds of clients every month with a dedication to excellence, hygiene, and artistry. Our team of expert stylists uses only premium products.</p>
+          <p>From <strong>precision haircuts to expert beard grooming and skin treatments</strong>, each service is crafted with care and a commitment to making you look and feel your best.</p>
+          <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+            <a href="#" class="btn-primary" onclick="showPage('booking');return false">Book Now</a>
+            <a href="https://wa.me/923016547862" target="_blank" class="whatsapp-btn">💬 WhatsApp Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="text-align:center;margin-bottom:3rem">
+        <div class="section-eyebrow">Our Philosophy</div>
+        <h2 class="section-title">What <em>Defines</em> Us</h2>
+        <div class="gold-line center-line"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-bottom:6rem">
+        <div class="service-card reveal" style="padding:2rem 1.5rem"><div class="service-icon">🏆</div><div class="service-name" style="font-size:1.1rem">Excellence</div><div class="service-desc">Every detail perfected, every expectation exceeded.</div></div>
+        <div class="service-card reveal" style="padding:2rem 1.5rem;transition-delay:.1s"><div class="service-icon">🌿</div><div class="service-name" style="font-size:1.1rem">Premium Products</div><div class="service-desc">Only the finest grooming products for your wellbeing.</div></div>
+        <div class="service-card reveal" style="padding:2rem 1.5rem;transition-delay:.2s"><div class="service-icon">🎯</div><div class="service-name" style="font-size:1.1rem">Personalized</div><div class="service-desc">Every client unique, every service tailored just for you.</div></div>
+        <div class="service-card reveal" style="padding:2rem 1.5rem;transition-delay:.3s"><div class="service-icon">🤝</div><div class="service-name" style="font-size:1.1rem">Trust</div><div class="service-desc">Built over years, one happy client at a time.</div></div>
+      </div>
+
+      <div class="reveal" style="text-align:center;margin-bottom:3rem">
+        <div class="section-eyebrow">Our Experts</div>
+        <h2 class="section-title">Meet the <em>Artists</em></h2>
+        <div class="gold-line center-line"></div>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal"><div class="team-avatar">✂</div><div class="team-name">Master Stylist</div><div class="team-role">Senior Hair Expert</div></div>
+        <div class="team-card reveal" style="transition-delay:.1s"><div class="team-avatar">🪒</div><div class="team-name">Beard Artist</div><div class="team-role">Grooming Specialist</div></div>
+        <div class="team-card reveal" style="transition-delay:.2s"><div class="team-avatar">🌿</div><div class="team-name">Skin Expert</div><div class="team-role">Facial & Skin Care</div></div>
+        <div class="team-card reveal" style="transition-delay:.3s"><div class="team-avatar">🎨</div><div class="team-name">Color Specialist</div><div class="team-role">Hair Color & Treatment</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════ GALLERY PAGE ══════════════ -->
+<div class="page" id="gallery-page">
+  <section id="gallery">
+    <div class="gallery-header reveal">
+      <div class="section-eyebrow">Our Portfolio</div>
+      <h2 class="section-title">Gallery of <em>Transformations</em></h2>
+      <div class="gold-line center-line"></div>
+      <p style="font-size:.75rem;color:rgba(255,255,255,0.4);margin-top:1rem;line-height:1.9">Step inside The Style Zone — where every visit is a masterpiece.</p>
+    </div>
+    <div class="gallery-filters reveal">
+      <button class="gf-btn active" data-filter="all">All Work</button>
+      <button class="gf-btn" data-filter="interior">Salon Interior</button>
+      <button class="gf-btn" data-filter="beard">Beard Styling</button>
+      <button class="gf-btn" data-filter="skin">Skin Care</button>
+      <button class="gf-btn" data-filter="exterior">Exterior</button>
+    </div>
+    <div class="gallery-masonry" id="galleryMasonry">
+      <div class="gallery-item lux-item" data-cat="interior">
+        <div class="lux-frame lux-wide"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img1" class="lux-img lazy" alt="Premium Salon Interior"><div class="lux-overlay"><div class="lux-tag">Premium Interior</div><div class="lux-zoom-icon">⊕</div></div><div class="lux-glow"></div></div>
+      </div>
+      <div class="gallery-item lux-item" data-cat="exterior">
+        <div class="lux-frame lux-portrait"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img2" class="lux-img lazy" alt="The Style Zone Storefront"><div class="lux-overlay"><div class="lux-tag">Our Storefront</div><div class="lux-zoom-icon">⊕</div></div><div class="lux-glow"></div></div>
+      </div>
+      <div class="gallery-item lux-item" data-cat="exterior">
+        <div class="lux-frame lux-square lux-circle-frame"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img3" class="lux-img lazy" alt="The Style Zone Brand Logo"><div class="lux-overlay"><div class="lux-tag">Brand Identity</div><div class="lux-zoom-icon">⊕</div></div><div class="lux-glow"></div></div>
+      </div>
+      <div class="gallery-item lux-item" data-cat="exterior">
+        <div class="lux-frame lux-portrait"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img4" class="lux-img lazy" alt="Style Zone Team"><div class="lux-overlay"><div class="lux-tag">Our Expert Team</div><div class="lux-zoom-icon">⊕</div></div><div class="lux-glow"></div></div>
+      </div>
+      <div class="gallery-item lux-item" data-cat="skin">
+        <div class="lux-frame lux-landscape"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img5" class="lux-img lazy" alt="Men's Skin Care Services"><div class="lux-overlay"><div class="lux-tag">Men's Skin Care</div><div class="lux-zoom-icon">⊕</div></div><div class="lux-glow"></div></div>
+      </div>
+      <div class="gallery-item lux-item" data-cat="interior">
+        <div class="lux-frame lux-portrait"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img6" class="lux-img lazy" alt="Luxury Salon Stations"><div class="lux-overlay"><div class="lux-tag">Luxury Stations</div><div class="lux-zoom-icon">⊕</div></div><div class="lux-glow"></div></div>
+      </div>
+    </div>
+
+    <div class="gallery-strip reveal" style="margin-top:3rem">
+      <div class="strip-label"><div class="section-eyebrow" style="margin-bottom:0">Featured Highlights</div></div>
+      <div class="strip-track">
+        <div class="strip-item lux-item" data-cat="interior"><div class="strip-frame"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img1" class="lux-img lazy strip-img" alt="Styling Chair"><div class="lux-overlay"><div class="lux-zoom-icon">⊕</div></div></div><p class="strip-caption">Styling Chair</p></div>
+        <div class="strip-item lux-item" data-cat="skin"><div class="strip-frame"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img5" class="lux-img lazy strip-img" alt="Beard Shave"><div class="lux-overlay"><div class="lux-zoom-icon">⊕</div></div></div><p class="strip-caption">Precision Shave</p></div>
+        <div class="strip-item lux-item" data-cat="interior"><div class="strip-frame"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img6" class="lux-img lazy strip-img" alt="Products Wall"><div class="lux-overlay"><div class="lux-zoom-icon">⊕</div></div></div><p class="strip-caption">Premium Products</p></div>
+        <div class="strip-item lux-item" data-cat="exterior"><div class="strip-frame"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img4" class="lux-img lazy strip-img" alt="Team"><div class="lux-overlay"><div class="lux-zoom-icon">⊕</div></div></div><p class="strip-caption">Expert Barbers</p></div>
+        <div class="strip-item lux-item" data-cat="exterior"><div class="strip-frame"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-real="img3" class="lux-img lazy strip-img" alt="Logo"><div class="lux-overlay"><div class="lux-zoom-icon">⊕</div></div></div><p class="strip-caption">Style Zone Brand</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════ CONTACT PAGE ══════════════ -->
+<div class="page" id="contact-page">
+  <section id="contact">
+    <div class="contact-container">
+      <div class="contact-header reveal">
+        <div class="section-eyebrow">Reach Us</div>
+        <h2 class="section-title">Get in <em>Touch</em></h2>
+        <div class="gold-line center-line"></div>
+      </div>
+      <div class="contact-grid">
+        <!-- LEFT: Info + Map -->
+        <div class="contact-info reveal-left">
+          <div class="contact-info-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-value">Makkah Colony, Sillanwali<br>Punjab, Pakistan</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">Phone / WhatsApp</div>
+              <div class="ci-value"><a href="tel:+923016547862" style="color:inherit;text-decoration:none">+92 301 6547862</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ci-icon">✉</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value">thestylezone@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ci-icon">🕐</div>
+            <div>
+              <div class="ci-label">Hours</div>
+              <div class="ci-value">Mon – Sat: 9:00 AM – 9:00 PM<br>Sunday: 10:00 AM – 7:00 PM</div>
+            </div>
+          </div>
+          <a href="https://wa.me/923016547862?text=Hello%20The%20Style%20Zone%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" class="whatsapp-btn">💬 Chat on WhatsApp</a>
+          <div class="social-links">
+            <a href="#" class="social-link" title="Instagram">📸</a>
+            <a href="#" class="social-link" title="Facebook">👍</a>
+            <a href="#" class="social-link" title="TikTok">🎵</a>
+            <a href="https://wa.me/923016547862" class="social-link" title="WhatsApp">💬</a>
+          </div>
+          <!-- GOOGLE MAP -->
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27392.03!2d72.464!3d31.820!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922c0b0b0b0b0b1%3A0x0!2sSillanwali%2C+Punjab%2C+Pakistan!5e0!3m2!1sen!2s!4v1699000000000!5m2!1sen!2s"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="The Style Zone — Makkah Colony, Sillanwali">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- RIGHT: Contact Form → WhatsApp -->
+        <div class="contact-form-wrap reveal-right">
+          <div class="contact-form-title">Send a Message</div>
+          <div class="cf-form">
+            <input type="text" id="cf-name" placeholder="Your full name">
+            <input type="tel" id="cf-phone" placeholder="Phone number">
+            <select id="cf-subject">
+              <option value="">Subject</option>
+              <option>Appointment Inquiry</option>
+              <option>Bridal Package Info</option>
+              <option>Pricing Query</option>
+              <option>Feedback</option>
+              <option>Other</option>
+            </select>
+            <textarea id="cf-msg" placeholder="Your message..."></textarea>
+            <button class="cf-submit" onclick="submitContactWA()">💬 Send via WhatsApp</button>
+          </div>
+          <p style="font-size:.6rem;color:rgba(255,255,255,0.25);margin-top:1rem;line-height:1.8">Your message will open WhatsApp pre-filled and ready to send to The Style Zone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer id="main-footer" style="display:none">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" onclick="showPage('home');return false">The Style <span>Zone</span></a>
+        <p>Premium salon in Makkah Colony, Sillanwali, Punjab. Expert haircuts, beard styling, skin care & more.</p>
+        <a href="https://wa.me/923016547862" target="_blank" class="footer-wa">💬 +92 301 6547862</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('services');return false">Haircut & Styling</a></li>
+          <li><a href="#" onclick="showPage('services');return false">Beard Styling</a></li>
+          <li><a href="#" onclick="showPage('services');return false">Hair Coloring</a></li>
+          <li><a href="#" onclick="showPage('services');return false">Facial Treatment</a></li>
+          <li><a href="#" onclick="showPage('services');return false">Skin Care</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('home');return false">Home</a></li>
+          <li><a href="#" onclick="showPage('about');return false">About Us</a></li>
+          <li><a href="#" onclick="showPage('gallery');return false">Gallery</a></li>
+          <li><a href="#" onclick="showPage('contact');return false">Contact</a></li>
+          <li><a href="#" onclick="showPage('booking');return false">Book Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+923016547862">+92 301 6547862</a></li>
+          <li><a href="https://wa.me/923016547862" target="_blank">WhatsApp</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a>Makkah Colony, Sillanwali</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>The Style Zone</span> · Sillanwali, Punjab, Pakistan</p>
+      <p>Made with <span>✦</span> for luxury</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ══ PARTICLES ══ */
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+function rsz(){canvas.width=innerWidth;canvas.height=innerHeight}rsz();
+addEventListener('resize',rsz);
+class P{constructor(){this.r()}r(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.s=Math.random()*1.5+.3;this.vx=(Math.random()-.5)*.3;this.vy=-(Math.random()*.4+.1);this.o=Math.random()*.4+.1;this.l=0;this.ml=Math.random()*200+100}u(){this.x+=this.vx;this.y+=this.vy;this.l++;if(this.l>this.ml||this.y<0)this.r()}d(){ctx.save();ctx.globalAlpha=this.o*(1-this.l/this.ml);ctx.fillStyle='#D4AF37';ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fill();ctx.restore()}}
+const pts=Array.from({length:120},()=>new P());
+(function ap(){ctx.clearRect(0,0,canvas.width,canvas.height);pts.forEach(p=>{p.u();p.d()});requestAnimationFrame(ap)})();
+
+/* ══ CURSOR ══ */
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function ac(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ac)})();
+document.querySelectorAll('a,button,.service-card,.service-opt,.time-slot,.lux-frame,.strip-frame,.team-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';ring.style.width='60px';ring.style.height='60px';ring.style.borderColor='rgba(212,175,55,0.8)'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';ring.style.width='40px';ring.style.height='40px';ring.style.borderColor='rgba(212,175,55,0.5)'});
+});
+
+/* ══ LOADER ══ */
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');document.getElementById('main-footer').style.display='block';initReveal();animateCounters()},2200)});
+
+/* ══ NAV SCROLL ══ */
+addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+
+/* ══ HAMBURGER ══ */
+document.getElementById('hamburger').onclick=()=>document.getElementById('mobileMenu').classList.toggle('open');
+document.getElementById('closeMenu').onclick=()=>document.getElementById('mobileMenu').classList.remove('open');
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+
+/* ══ PAGE ROUTING ══ */
+const PAGES={home:'home-page',services:'services-page',booking:'booking-page',about:'about-page',gallery:'gallery-page',contact:'contact-page'};
+function showPage(name){
+  const tr=document.getElementById('pageTransition');
+  tr.classList.add('active');
+  setTimeout(()=>{
+    Object.values(PAGES).forEach(id=>{const el=document.getElementById(id);if(el){el.style.display='none';el.classList.remove('active')}});
+    const tg=document.getElementById(PAGES[name]);
+    if(tg){tg.style.display='block';tg.classList.add('active')}
+    document.querySelectorAll('.nav-links a[data-page]').forEach(a=>a.classList.toggle('active',a.dataset.page===name));
+    scrollTo({top:0,behavior:'instant'});
+    initReveal();
+    tr.classList.remove('active');
+    if(name==='gallery'){initGallery();loadGalleryImgs()}
+  },350);
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  Object.entries(PAGES).forEach(([n,id])=>{const el=document.getElementById(id);if(el&&n!=='home'){el.style.display='none';el.classList.remove('active')}});
+  document.getElementById('home-page').style.display='block';
+  const td=document.getElementById('b-date');if(td)td.min=new Date().toISOString().split('T')[0];
+  initReveal();
+  // service opt clicks
+  document.querySelectorAll('.service-opt').forEach(o=>{o.addEventListener('click',()=>{document.querySelectorAll('.service-opt').forEach(x=>x.classList.remove('selected'));o.classList.add('selected');selectedService=o.dataset.service})});
+  document.querySelectorAll('.time-slot').forEach(s=>{s.addEventListener('click',()=>{document.querySelectorAll('.time-slot').forEach(x=>x.classList.remove('selected'));s.classList.add('selected');selectedTime=s.dataset.time})});
+});
+
+/* ══ SCROLL REVEAL ══ */
+function initReveal(){
+  const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>{el.classList.remove('visible');obs.observe(el)});
+}
+
+/* ══ COUNTERS ══ */
+function animateCounters(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const t=parseFloat(el.dataset.count),dec=t%1!==0;let c=0;const step=t/60;
+    const tm=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(tm)}el.textContent=dec?c.toFixed(1):Math.floor(c)+(t>=1000?'+':'')},25);
+  });
+}
+const sObs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){animateCounters();sObs.disconnect()}})},{threshold:.3});
+const stEl=document.querySelector('.stats-ribbon');if(stEl)sObs.observe(stEl);
+
+/* ══ BOOKING STEPS ══ */
+let curStep=1,selectedService='',selectedTime='';
+function updateDots(s){for(let i=1;i<=4;i++){const d=document.getElementById('step-dot-'+i);if(!d)continue;d.classList.remove('active','done');if(i<s)d.classList.add('done');else if(i===s)d.classList.add('active');if(i<=3){const l=document.getElementById('step-line-'+i);if(l)l.classList.toggle('done',i<s)}}}
+function nextStep(n){document.getElementById('form-step-'+curStep).classList.remove('active');curStep=n;document.getElementById('form-step-'+n).classList.add('active');updateDots(n)}
+function prevStep(n){nextStep(n)}
+
+/* ══ WHATSAPP BOOKING ══ */
+const WA_NUMBER='923016547862';
+function buildBookingMsg(){
+  const name=document.getElementById('b-name').value.trim()||'(not provided)';
+  const phone=document.getElementById('b-phone').value.trim()||'(not provided)';
+  const email=document.getElementById('b-email').value.trim()||'(not provided)';
+  const service=selectedService||'(not selected)';
+  const dateRaw=document.getElementById('b-date').value;
+  const dateStr=dateRaw?new Date(dateRaw).toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'(not selected)';
+  const time=selectedTime||'(not selected)';
+  const notes=document.getElementById('b-notes').value.trim()||'None';
+  return `Hello The Style Zone Salon,\n\n✦ New Appointment Request ✦\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📧 Email: ${email}\n✂ Service: ${service}\n📅 Date: ${dateStr}\n⏰ Time: ${time}\n📝 Notes: ${notes}\n\n─────────────────\nBooked via stylezone.pk`;
+}
+function submitBookingWA(){
+  const name=document.getElementById('b-name').value.trim();
+  const phone=document.getElementById('b-phone').value.trim();
+  if(!name||!phone){alert('Please fill in your Name and Phone Number.');return}
+  const msg=encodeURIComponent(buildBookingMsg());
+  const url=`https://wa.me/${WA_NUMBER}?text=${msg}`;
+  window.open(url,'_blank');
+  document.getElementById('waRetryBtn').href=url;
+  document.getElementById('confirmText').innerHTML=`Your booking for <strong style="color:var(--gold)">${document.getElementById('b-name').value.trim()}</strong> has been prepared.<br>Complete it by sending the pre-filled WhatsApp message to <strong style="color:var(--gold)">+92 301 6547862</strong>.`;
+  nextStep(4);
+}
+function resetBooking(){
+  document.querySelectorAll('.service-opt').forEach(o=>o.classList.remove('selected'));
+  document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));
+  selectedService='';selectedTime='';
+  ['b-name','b-phone','b-email','b-notes'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
+  curStep=1;
+  document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('form-step-1').classList.add('active');
+  updateDots(1);
+}
+
+/* ══ CONTACT FORM → WA ══ */
+function submitContactWA(){
+  const name=document.getElementById('cf-name').value.trim()||'Customer';
+  const phone=document.getElementById('cf-phone').value.trim()||'N/A';
+  const subject=document.getElementById('cf-subject').value||'General Inquiry';
+  const msg=document.getElementById('cf-msg').value.trim()||'(no message)';
+  const text=encodeURIComponent(`Hello The Style Zone,\n\n📬 Contact Form Message\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📌 Subject: ${subject}\n💬 Message: ${msg}`);
+  window.open(`https://wa.me/${WA_NUMBER}?text=${text}`,'_blank');
+}
+
+/* ══ GALLERY ══ */
+function initGallery(){
+  const btns=document.querySelectorAll('.gf-btn'),items=document.querySelectorAll('.lux-item');
+  btns.forEach(btn=>{btn.onclick=()=>{btns.forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;items.forEach(it=>{const m=f==='all'||it.dataset.cat===f;it.style.opacity=m?'1':'0.15';it.style.transform=m?'scale(1)':'scale(0.94)';it.style.transition='all .4s';it.style.pointerEvents=m?'all':'none'})}});
+  // Lightbox
+  document.querySelectorAll('.lux-frame,.strip-frame').forEach((fr,i,arr)=>{
+    fr.addEventListener('click',()=>{
+      const img=fr.querySelector('.lux-img');
+      const cap=fr.closest('.lux-item,.strip-item')?.querySelector('.lux-tag,.strip-caption');
+      openLightbox(img?.src||'',cap?.textContent||'The Style Zone',i,arr.length);
+    });
+  });
+}
+let lbIdx=0;
+function openLightbox(src,cap,idx,total){
+  const lb=document.getElementById('luxLightbox');
+  document.getElementById('llbImg').src=src;
+  document.getElementById('llbCaption').textContent=cap;
+  document.getElementById('llbCounter').textContent=(idx+1)+' / '+total;
+  lb.classList.add('open');lbIdx=idx;
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){document.getElementById('luxLightbox').classList.remove('open');document.body.style.overflow=''}
+function lbNav(d){
+  const frames=document.querySelectorAll('.lux-frame,.strip-frame');
+  lbIdx=(lbIdx+d+frames.length)%frames.length;
+  const f=frames[lbIdx],img=f?.querySelector('.lux-img'),cap=f?.closest('.lux-item,.strip-item')?.querySelector('.lux-tag,.strip-caption');
+  if(img){document.getElementById('llbImg').src=img.src;document.getElementById('llbCaption').textContent=cap?.textContent||'';document.getElementById('llbCounter').textContent=(lbIdx+1)+' / '+frames.length}
+}
+document.addEventListener('keydown',e=>{if(document.getElementById('luxLightbox').classList.contains('open')){if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1)}});
+
+/* ══ LOAD GALLERY IMAGES FROM UPLOAD CONTEXT ══ */
+function loadGalleryImgs(){
+  const FALLBACKS={img1:'linear-gradient(145deg,#2a1f0a,#1a1208)',img2:'linear-gradient(145deg,#0d0d12,#1a1a25)',img3:'linear-gradient(145deg,#0a0d1a,#1a1a2d)',img4:'linear-gradient(145deg,#0d0d0d,#1a1208)',img5:'linear-gradient(145deg,#0a120d,#12221a)',img6:'linear-gradient(145deg,#2a1f0a,#1a1208)'};
+  const ICONS={img1:'✂',img2:'🏪',img3:'⭐',img4:'👥',img5:'💈',img6:'🪞'};
+  let uploaded={};
+  try{
+    const parentImgs=Array.from(window.parent.document.querySelectorAll('img[src]')).filter(i=>i.naturalWidth>100&&(i.src.startsWith('blob:')||i.src.startsWith('data:')||i.src.includes('upload')));
+    ['img1','img2','img3','img4','img5','img6'].forEach((k,i)=>{if(parentImgs[i])uploaded[k]=parentImgs[i].src});
+  }catch(e){}
+  document.querySelectorAll('.lux-img.lazy').forEach(img=>{
+    const k=img.dataset.real;
+    if(uploaded[k]){img.src=uploaded[k];img.classList.remove('lazy')}
+    else{
+      const fr=img.closest('.lux-frame,.strip-frame');
+      if(fr){img.style.display='none';fr.style.background=FALLBACKS[k]||'linear-gradient(145deg,#1a1208,#0d0d0d)';const em=document.createElement('div');em.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;opacity:.35;pointer-events:none';em.textContent=ICONS[k]||'✨';fr.appendChild(em)}
+    }
+  });
+}
+</script>
+</body>
+</html>
